@@ -8,15 +8,24 @@
 
 #import "ViewController.h"
 
+
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+
+    //add firebase reference
+
+
+    self.ref = [FIRDatabase database].reference;
+
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     [button setTitle:@"Press Me" forState:UIControlStateNormal];
@@ -36,6 +45,12 @@
 
 - (void)buttonPressed:(UIButton *)button {
     NSLog(@"Button Pressed");
+    
+    //set value via firebase
+    [[_ref child:@"places"] setValue:@{@"cities": @"San Francisco"}];
+    
+    //set child of child via firebase
+    [[[_ref child:@"users"] child:@"user"] setValue:@{@"username": @"Greg"}];
 }
 
 - (void)didReceiveMemoryWarning {

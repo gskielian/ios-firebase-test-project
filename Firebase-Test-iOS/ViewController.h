@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@import Firebase;
+@import FirebaseDatabaseUI;
+
 @interface ViewController : UIViewController
+@property(strong, nonatomic) FIRDatabaseReference *ref;
 
 
 @end
